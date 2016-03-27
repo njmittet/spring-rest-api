@@ -1,0 +1,15 @@
+version: '2'
+services:
+  backend:
+    container_name: backend
+    image: 'spring-rest-api'
+    ports:
+      - '9000:9000'
+  proxy:
+    container_name: proxy
+    image: 'javaee-proxy'
+    environment:
+      - 'PROXY_HOST=backend'
+      - 'PROXY_PORT=9000'
+    ports:
+      - 8080:8080

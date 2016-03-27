@@ -1,0 +1,21 @@
+version: '2'
+services:
+  backend:
+    container_name: backend
+    image: 'spring-rest-api'
+    build: .
+    volumes:
+      - '/opt/java'
+    ports:
+      - '9000:9000'
+  proxy:
+    container_name: proxy
+    image: 'njmittet/alpine-varnish'
+    depends_on: 
+      - backend
+    volumes_from:
+      - backend
+    environment:
+      - 'VCL_CONFIG=/opt/java/varnish.vcl'
+    ports:
+      - '8080:8080'
