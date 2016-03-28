@@ -30,9 +30,12 @@ public class PersonController {
     }
 
     @RequestMapping(value = "/headers/authorization")
-    public ResponseEntity<Void> readHeader(@RequestHeader("Authorization") String authorization) {
-        log.debug("Authorization: {}", authorization);
-        return new ResponseEntity<>(HttpStatus.ACCEPTED);
+    public ResponseEntity<Header> readHeader(@RequestHeader(value = "Authorization", required = false) String authorization) {
+        if (!isEmpty(authorization)) {
+            log.debug("Authorization: {}", authorization);
+            return new ResponseEntity<>(new Header("Authorization", authorization), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
@@ -42,6 +45,10 @@ public class PersonController {
             return new ResponseEntity<>(person.get(), HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    private boolean isEmpty(String string) {
+        return string == null || string.isEmpty();
     }
 
     private int parseString(String string) {
