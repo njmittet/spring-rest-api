@@ -19,12 +19,8 @@ class MemoryDatabase implements PersonDatabase {
 
     @PostConstruct
     public void init() {
-        long first = counter.getAndIncrement();
-        persons.put(first, new Person(first, "Ola", "Dunk"));
-        long second = counter.getAndIncrement();
-        persons.put(second, new Person(second, "Kari", "Nordmann"));
-        long third = counter.getAndIncrement();
-        persons.put(third, new Person(second, "Nils", "Pils"));
+        addPerson("Ola", "Dunk");
+        addPerson("Kari", "Nordmann");
     }
 
     @Override
