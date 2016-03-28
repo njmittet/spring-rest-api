@@ -1,0 +1,133 @@
+{
+	"id": "08b624fd-0af7-ac98-d1d8-45af20231b19",
+	"name": "spring-rest-api",
+	"description": "",
+	"order": [
+		"ec6b9dec-2230-0913-91c8-e37053e4b5cb",
+		"3d759650-c870-c7a3-1253-4aca39366de9",
+		"b6fd1e4a-293d-5654-88e0-f3c750825e4c",
+		"e4dbd8d7-6ed5-14bc-5930-049439d6b1af",
+		"b6148c83-792e-df10-2dc7-e1a59e060820"
+	],
+	"folders": [],
+	"timestamp": 1458898369859,
+	"owner": 0,
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "3d759650-c870-c7a3-1253-4aca39366de9",
+			"headers": "",
+			"url": "http://localhost:9000/persons/1",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1459185018409,
+			"name": "/persons/1",
+			"description": "",
+			"collectionId": "08b624fd-0af7-ac98-d1d8-45af20231b19",
+			"responses": []
+		},
+		{
+			"id": "b6148c83-792e-df10-2dc7-e1a59e060820",
+			"headers": "",
+			"url": "http://dockerhost:8080/persons/headers/authorization",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1459185011661,
+			"name": "/persons/headers/authorization",
+			"description": "Using Varnish, running in a Docker image to add Authorization header.",
+			"collectionId": "08b624fd-0af7-ac98-d1d8-45af20231b19",
+			"responses": []
+		},
+		{
+			"id": "b6fd1e4a-293d-5654-88e0-f3c750825e4c",
+			"headers": "Authorization: Basic dXNlcm5hbWU6cGFzc3dvcmQ=\n",
+			"url": "http://localhost:9000/persons/headers/authorization",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1459185016249,
+			"name": "/persons/headers/authorization",
+			"description": "",
+			"collectionId": "08b624fd-0af7-ac98-d1d8-45af20231b19",
+			"responses": []
+		},
+		{
+			"id": "e4dbd8d7-6ed5-14bc-5930-049439d6b1af",
+			"headers": "",
+			"url": "http://localhost:9000/persons/",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "firstName",
+					"value": "Firstname",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "lastName",
+					"value": "Lastname",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "",
+					"value": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1459185013974,
+			"name": "/persons",
+			"description": "",
+			"collectionId": "08b624fd-0af7-ac98-d1d8-45af20231b19",
+			"responses": []
+		},
+		{
+			"id": "ec6b9dec-2230-0913-91c8-e37053e4b5cb",
+			"headers": "",
+			"url": "http://localhost:9000/persons",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1459185021033,
+			"name": "/persons",
+			"description": "",
+			"collectionId": "08b624fd-0af7-ac98-d1d8-45af20231b19",
+			"responses": []
+		}
+	]
+}
