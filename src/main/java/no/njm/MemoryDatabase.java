@@ -47,4 +47,12 @@ class MemoryDatabase implements PersonDatabase {
         }
         return Optional.empty();
     }
+
+    @Override
+    public Optional<Person> addPerson(String firstName, String lastName) {
+        long id = counter.getAndIncrement();
+        Person person = new Person(id, firstName, lastName);
+        persons.put(id, person);
+        return Optional.of(person);
+    }
 }

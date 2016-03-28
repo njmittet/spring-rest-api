@@ -32,7 +32,6 @@ public class PersonController {
     @RequestMapping(value = "/headers/authorization")
     public ResponseEntity<Header> readHeader(@RequestHeader(value = "Authorization", required = false) String authorization) {
         if (!isEmpty(authorization)) {
-            log.debug("Authorization: {}", authorization);
             return new ResponseEntity<>(new Header("Authorization", authorization), HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -45,6 +44,20 @@ public class PersonController {
             return new ResponseEntity<>(person.get(), HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @RequestMapping(method = RequestMethod.POST)
+    public ResponseEntity<Person> createPerson(@RequestParam String firstName, @RequestParam String lastName) {
+        if (isEmpty(firstName) || isEmpty(lastName)) {
+            log.warn("All values is mandatory: firstName={}, lastname={}", firstName, lastName);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        Optional<Person> person = persons.addPerson(firstName, lastName);
+        if (!person.isPresent()) {
+            log.error("Database returned empty object: firstName={}, lastname={}", firstName, lastName);
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return new ResponseEntity<>(person.get(), HttpStatus.CREATED);
     }
 
     private boolean isEmpty(String string) {

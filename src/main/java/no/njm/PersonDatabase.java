@@ -8,4 +8,6 @@ public interface PersonDatabase {
     List<Person> listPersons(int limit);
 
     Optional<Person> getPerson(long id);
+
+    Optional<Person> addPerson(String firstName, String lastName);
 }
