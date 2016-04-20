@@ -17,7 +17,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "/persons")
-public class PersonController {
+class PersonController {
 
     private static Logger log = LoggerFactory.getLogger(PersonController.class);
 
